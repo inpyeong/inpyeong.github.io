@@ -88,6 +88,10 @@ body {
     border-bottom: 1px solid $border-color;
   }
 
+  h3 {
+    font-size: 0.9em;
+  }
+
 	h1, h2, h3, h4, h5, h6 {
 		.header-link {
 			position: relative;
@@ -108,7 +112,7 @@ body {
   p,
   li,
   dl {
-    font-size: 1em;
+    font-size: 0.75em;
   }
 
   /* paragraph indents */
