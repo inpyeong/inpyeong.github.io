@@ -107,7 +107,12 @@ body {
 		&:hover .header-link {
 			opacity: 1;
 		}
-	}
+  }
+  
+  .center {
+    display: block;
+    margin: auto;
+  }
 
   p,
   li,

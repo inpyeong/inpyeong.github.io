@@ -46,3 +46,16 @@ DES란 Data Encryption Standard의 약자로, symmetric key의 __Block cipher__ 
 Block Cipher이기 때문에 동작 원리는 다음과 같습니다.
 1. 암호화할 메시지 m을 여러 개의 64bit 블럭으로 나눈다.
 2. 블럭 단위로 암호화를 실시하는데, 마지막 블럭이 64bit보다 작은 경우 padding을 붙여서 64bit로 만든 후 암호화를 진행한다.
+
+\
+![No Image](/assets/images/des.png){: width="400px" height="400px"}{: .center}
+
+위 그림을 보면서 DES의 원리에 대해 간략히 설명하겠습니다.
+1. 암호화할 메시지를 64bit로 쪼갠다.
+   * 쪼개진 것들을 블럭이라고 부른다. 그림에서는 '64-bit input'이 한 블럭이라 보면 된다.
+2. permutation 과정을 통해 비트 간의 순서를 바꾼다.
+   * 
+3. 64bit 블럭을 32bit로 나눈 후, 56bit key로부터 생성한 48bit 랜덤넘버(K)와 암호화를 실시한다.
+4. 16개의 라운드동안 이를 반복한다.
+   
+
