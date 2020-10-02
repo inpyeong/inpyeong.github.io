@@ -54,8 +54,18 @@ Block Cipher이기 때문에 동작 원리는 다음과 같습니다.
 1. 암호화할 메시지를 64bit로 쪼갠다.
    * 쪼개진 것들을 블럭이라고 부른다. 그림에서는 '64-bit input'이 한 블럭이라 보면 된다.
 2. permutation 과정을 통해 비트 간의 순서를 바꾼다.
-   * 
+   * permutation 과정을 확대한 이미지는 아래와 같습니다.
+     \
+     \
+     ![No Image](/assets/images/des-permutation.png){: width="85%"}
 3. 64bit 블럭을 32bit로 나눈 후, 56bit key로부터 생성한 48bit 랜덤넘버(K)와 암호화를 실시한다.
-4. 16개의 라운드동안 이를 반복한다.
-   
+   * '64-bit input'를 32bit로 나누고 순서를 바꾸며 Mangler 함수를 쓰는 이러한 구조를 Feistel cipher 라고 한다.
+4. 16개의 round동안 이를 반복한다.
+
+\
+위에서 나온 용어들에 대해 아래서 다시 설명하겠습니다.
+
+### DES round
+
+
 
