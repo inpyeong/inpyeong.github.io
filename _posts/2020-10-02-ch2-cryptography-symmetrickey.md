@@ -53,19 +53,30 @@ Block Cipher이기 때문에 동작 원리는 다음과 같습니다.
 위 그림을 보면서 DES의 원리에 대해 간략히 설명하겠습니다.
 1. 암호화할 메시지를 64bit로 쪼갠다.
    * 쪼개진 것들을 블럭이라고 부른다. 그림에서는 '64-bit input'이 한 블럭이라 보면 된다.
-2. permutation 과정을 통해 비트 간의 순서를 바꾼다.
+2. __permutation__ 과정을 통해 비트 간의 순서를 바꾼다.
    * permutation 과정을 확대한 이미지는 아래와 같습니다.
      \
      \
      ![No Image](/assets/images/des-permutation.png){: width="85%"}
-3. 64bit 블럭을 32bit로 나눈 후, 56bit key로부터 생성한 48bit 랜덤넘버(K)와 암호화를 실시한다.
-   * '64-bit input'를 32bit로 나누고 순서를 바꾸며 Mangler 함수를 쓰는 이러한 구조를 Feistel cipher 라고 한다.
-4. 16개의 round동안 이를 반복한다.
+3. 64bit 블럭을 32bit로 나눈 후, 56bit key로부터 생성한 __48bit 랜덤넘버(K)__ 와 암호화를 실시한다.
+   * '64-bit input'를 32bit로 나누고 순서를 바꾸며 __Mangler Function__ 을 쓰는 이러한 구조를 Feistel cipher 라고 한다.
+4. 16개의 __round__ 동안 이를 반복한다.
 
 \
 위에서 나온 용어들에 대해 아래서 다시 설명하겠습니다.
 
 ### DES round
+DES의 각 round를 확대한 이미지는 아래와 같습니다.
+
+![No Image](/assets/images/des-round.png){: width="50%" height="50%"}{: .center}
+
+이미지를 보면 Mangler Function에 '32-bit Rn'와 48bit의 'Kn'이 입력되는 것을 볼 수 있습니다. 두 입력의 bit 수가 맞지 않은데 어떻게 Mangler Function 안에서 연산이 이루어질까요? 이 부분에 대해선 아래에서 설명드리겠습니다.
+
+그리고 Mangler Function의 반환값과 '32-bit Ln'에 대해 XOR 연산을 진행합니다. 마지막으로는 '32-bit Ln+1'과 '32-bit Rn+1'을 concat하여 마지막 permutation 과정을 거치고 하나의 round을 마무리합니다!
 
 
+### Mangler Function
+![No Image](/assets/images/des-mangler.png){: width="70%" height="70%"}{: .center}
+
+위 이미지는 Mangler Function을 확대한 것입니다. 32bit R을 Expansion Function을 통해 48bit로 확대시키고 있는 것을 확인할 수 있습니다. 48bit로 확대한 R과 입력으로 받은 K에 대해 XOR 연산을 진행하고, 그 결과로 나온 48bit를 다시 32bit로 축소하는 과정을 거치게 됩니다.
 
